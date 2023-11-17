@@ -28,10 +28,10 @@ namespace AddressesAPI.v1.Infrastructure
         public int? Usrn { get; set; }
         
         [Column("uprn")]
-        public int Uprn { get; set; }
+        public long Uprn { get; set; }
         
         [Column("parent_uprn")]
-        public int? ParentUprn { get; set; }
+        public long? ParentUprn { get; set; }
         
         [Column("blpu_start_date")]
         public int BlpuStartDate { get; set; }
@@ -56,10 +56,10 @@ namespace AddressesAPI.v1.Infrastructure
         public bool PropertyShell { get; set; }
         
         [Column("easting")]
-        public float Easting { get; set; }
+        public double Easting { get; set; }
         
         [Column("northing")]
-        public float Northing { get; set; }
+        public double Northing { get; set; }
         
         [Column("unit_number")]
         public int? UnitNumber { get; set; }
@@ -105,10 +105,10 @@ namespace AddressesAPI.v1.Infrastructure
         public bool Neverexport { get; set; }
         
         [Column("longitude")]
-        public float Longitude { get; set; }
+        public double Longitude { get; set; }
         
         [Column("latitude")]
-        public float Latitude { get; set; }
+        public double Latitude { get; set; }
         
         [StringLength(8)]
         [Column("gazetteer")]

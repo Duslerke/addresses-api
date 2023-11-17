@@ -8,8 +8,8 @@ namespace AddressesAPI.Boundary.Responses
         public int LpiEndDate { get; set; }
         public int LpiLastUpdateDate { get; set; }
         public int? Usrn { get; set; }
-        public int Uprn { get; set; }
-        public int? ParentUprn { get; set; }
+        public long Uprn { get; set; }
+        public long? ParentUprn { get; set; }
         public int BlpuStartDate { get; set; }
         public int BlpuEndDate { get; set; }
         public string? BlpuClass { get; set; }
@@ -17,8 +17,8 @@ namespace AddressesAPI.Boundary.Responses
         public string? UsageDescription { get; set; }
         public string? UsagePrimary { get; set; }
         public bool PropertyShell { get; set; }
-        public float Easting { get; set; }
-        public float Northing { get; set; }
+        public double Easting { get; set; }
+        public double Northing { get; set; }
         public int? UnitNumber { get; set; }
         public string? SaoText { get; set; }
         public string? BuildingNumber { get; set; }
@@ -32,8 +32,8 @@ namespace AddressesAPI.Boundary.Responses
         public string? PostcodeNospace { get; set; }
         public string? PlanningUseClass { get; set; }
         public bool Neverexport { get; set; }
-        public float Longitude { get; set; }
-        public float Latitude { get; set; }
+        public double Longitude { get; set; }
+        public double Latitude { get; set; }
         public string? Gazetteer { get; set; }
         public string? Organisation { get; set; }
         public string? Line1 { get; set; }

@@ -175,5 +175,25 @@ namespace AddressesAPI.Tests.v1.Gateways
             gwResponse.Should().HaveCount(2);
             gwResponse.Should().AllSatisfy(a => a.PostcodeNospace?.Equals(requestedPostCode));
         }
+
+        [TestCase(TestName = "GW results don't depend on database postcodes having no spaces")]
+        public async Task GetAddressByPostcodeGatewayIgnoresWhitespaceWithinTheDatabasePostcodes()
+        {
+            // arrange
+            var requestedPostCode = "E81LL";
+            var randomAddress = Randomizer.Create<AddressEntity>();
+            randomAddress.PostcodeNospace = "E8 1LL";
+
+            AddressesContext.Addresses.Add(randomAddress);
+            AddressesContext.SaveChanges();
+
+            var request = new GetPostcodeAddressesDomain() { Postcode = requestedPostCode };
+
+            // act
+            var gwResponse = await _classUnderTest.GetPostcodeAddresses(request).ConfigureAwait(false);
+
+            // assert
+            gwResponse.Should().HaveCount(1);
+        }
     }
 }

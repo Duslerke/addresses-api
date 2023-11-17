@@ -23,7 +23,7 @@ namespace AddressesAPI.v1.Gateways
                 .Where(a => a.PostcodeNospace != null)
                 .Where(a => a.PostcodeNospace.Trim() != "")
                 .Where(a =>
-                    a.PostcodeNospace.Trim().ToLower().Equals(requestedPostcode)
+                    a.PostcodeNospace.Replace(" ", "").Trim().ToLower().Equals(requestedPostcode)
                 )
                 .ToListAsync()
                 .ConfigureAwait(false);
