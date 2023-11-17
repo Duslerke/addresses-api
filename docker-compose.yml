@@ -1,0 +1,14 @@
+version: "3.2"
+
+services:
+  address-testdb:
+    environment:
+      - POSTGRES_USER=postgresuser
+      - POSTGRES_PASSWORD=postgresPass
+      - POSTGRES_DB=testdb
+    image: address-testdb
+    build:
+      context: ./AddressesAPI.Tests/testdb
+      dockerfile: ./Dockerfile
+    ports:
+      - 5430:5432
