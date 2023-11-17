@@ -1,3 +1,4 @@
+using AddressesAPI.Boundary.Responses;
 using AddressesAPI.v1.Domain;
 using AddressesAPI.v1.Infrastructure;
 
@@ -53,12 +54,68 @@ namespace AddressesAPI.v1.Factories
             };
         }
 
-        public static List<AddressDomain> EntityToDomain(this IList<AddressEntity> databaseEnties)
+        public static List<AddressDomain> EntityToDomain(this IList<AddressEntity> databaseEntities)
         {
-            if (databaseEnties is null)
+            if (databaseEntities is null)
                 return null;
 
-            return databaseEnties.Select(dbAddress => dbAddress.EntityToDomain()).ToList();
+            return databaseEntities.Select(dbAddress => dbAddress.EntityToDomain()).ToList();
+        }
+
+        public static AddressPresentation DomainToPresentation(this AddressDomain domainEntity)
+        {
+            if (domainEntity is null)
+                return null;
+
+            return new AddressPresentation
+            {
+                LpiKey = domainEntity.LpiKey,
+                LpiLogicalStatus = domainEntity.LpiLogicalStatus,
+                LpiStartDate = domainEntity.LpiStartDate,
+                LpiEndDate = domainEntity.LpiEndDate,
+                LpiLastUpdateDate = domainEntity.LpiLastUpdateDate,
+                Usrn = domainEntity.Usrn,
+                Uprn = domainEntity.Uprn,
+                ParentUprn = domainEntity.ParentUprn,
+                BlpuStartDate = domainEntity.BlpuStartDate,
+                BlpuEndDate = domainEntity.BlpuEndDate,
+                BlpuClass = domainEntity.BlpuClass,
+                BlpuLastUpdateDate = domainEntity.BlpuLastUpdateDate,
+                UsageDescription = domainEntity.UsageDescription,
+                UsagePrimary = domainEntity.UsagePrimary,
+                PropertyShell = domainEntity.PropertyShell,
+                Easting = domainEntity.Easting,
+                Northing = domainEntity.Northing,
+                UnitNumber = domainEntity.UnitNumber,
+                SaoText = domainEntity.SaoText,
+                BuildingNumber = domainEntity.BuildingNumber,
+                PaoText = domainEntity.PaoText,
+                PaonStartNum = domainEntity.PaonStartNum,
+                StreetDescription = domainEntity.StreetDescription,
+                Locality = domainEntity.Locality,
+                Ward = domainEntity.Ward,
+                Town = domainEntity.Town,
+                Postcode = domainEntity.Postcode,
+                PostcodeNospace = domainEntity.PostcodeNospace,
+                PlanningUseClass = domainEntity.PlanningUseClass,
+                Neverexport = domainEntity.Neverexport,
+                Longitude = domainEntity.Longitude,
+                Latitude = domainEntity.Latitude,
+                Gazetteer = domainEntity.Gazetteer,
+                Organisation = domainEntity.Organisation,
+                Line1 = domainEntity.Line1,
+                Line2 = domainEntity.Line2,
+                Line3 = domainEntity.Line3,
+                Line4 = domainEntity.Line4,
+            };
+        }
+
+        public static List<AddressPresentation> DomainToPresentation(this IList<AddressDomain> domainEntities)
+        {
+            if (domainEntities is null)
+                return null;
+
+            return domainEntities.Select(domainAddress => domainAddress.DomainToPresentation()).ToList();
         }
     }
 }
