@@ -52,5 +52,13 @@ namespace AddressesAPI.v1.Factories
                 Line4 = databaseEntity.Line4,
             };
         }
+
+        public static List<AddressDomain> EntityToDomain(this IList<AddressEntity> databaseEnties)
+        {
+            if (databaseEnties is null)
+                return null;
+
+            return databaseEnties.Select(dbAddress => dbAddress.EntityToDomain()).ToList();
+        }
     }
 }
