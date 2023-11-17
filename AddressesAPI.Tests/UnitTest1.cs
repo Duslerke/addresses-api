@@ -1,3 +1,5 @@
+using AddressesAPI;
+
 namespace AddressesAPI.Tests
 {
     public class Tests
